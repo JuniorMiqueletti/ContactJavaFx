@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="884.0" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fcv.javafx.juniormiqueletti.controller.ContatoController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.411371237458194" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tvContatos" layoutX="22.0" layoutY="79.0" prefHeight="373.0" prefWidth="243.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Nome" />
+                      <TableColumn prefWidth="75.0" text="Telefone" />
+                        <TableColumn prefWidth="208.0" text="E-Mail" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="8.0" text="Detalhes do Contato">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <GridPane hgap="10.0" layoutX="14.0" layoutY="24.0" prefHeight="393.0" prefWidth="488.0" vgap="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="24.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" prefWidth="130.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="362.0" minWidth="10.0" prefWidth="358.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Nome" />
+                        <Label text="Data de Nascimento" GridPane.rowIndex="2" />
+                        <Label text="Endereco" GridPane.rowIndex="3" />
+                        <Label text="Número" GridPane.rowIndex="4" />
+                        <Label text="Município" GridPane.rowIndex="5" />
+                        <Label text="Estado" GridPane.rowIndex="6" />
+                        <Label text="Telefone" GridPane.rowIndex="7" />
+                        <Label text="E-Mail" GridPane.rowIndex="8" />
+                        <Label text="Observação" GridPane.rowIndex="9" />
+                        <TextField fx:id="tfNome" GridPane.columnIndex="1" />
+                        <Label text="Sexo" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="dtDataNascimento" prefHeight="25.0" prefWidth="370.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="tfEndereco" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="tfNumero" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="tfMunicipio" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <ComboBox fx:id="cbEstado" prefHeight="25.0" prefWidth="481.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="tfTelefone" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="tfEmail" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextArea fx:id="tfObersavao" prefHeight="200.0" prefWidth="156.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <HBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <RadioButton fx:id="rbMasculino" mnemonicParsing="false" selected="true" text="Masculino">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="tgSexo" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="rbFeminino" mnemonicParsing="false" text="Feminino" toggleGroup="$tgSexo" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER_RIGHT" layoutX="148.0" layoutY="433.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#novoAction" prefHeight="25.0" prefWidth="100.0" text="Novo" />
+                        <Button mnemonicParsing="false" onAction="#salvarAction" prefHeight="25.0" prefWidth="100.0" text="Salvar" />
+                        <Button mnemonicParsing="false" onAction="#removeAction" prefHeight="25.0" prefWidth="100.0" text="Remove" />
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </center>
+</BorderPane>
