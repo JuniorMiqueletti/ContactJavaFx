@@ -1,6 +1,8 @@
 package br.com.fcv.javafx.juniormiqueletti.model;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -8,102 +10,117 @@ import javafx.beans.property.StringProperty;
  */
 public class Contato {
 
-    StringProperty nomeProperty, telefoneProperty, municipioProperty, emailProperty, observacaoProperty, sexoProperty, dataNascimentoProperty;
-    IntegerProperty numeroProperty;
+    StringProperty nome, telefone, municipio, email, observacao, sexo, dataNascimento;
+    IntegerProperty numero;
 
-    public String getNomeProperty() {
-        return nomeProperty.get();
+    public Contato(String nome, String telefone, String municipio, String email, String observacao, String sexo, String dataNascimento, Integer numero) {
+        this.nome = new SimpleStringProperty(nome);
+        this.telefone = new SimpleStringProperty(telefone);
+        this.municipio = new SimpleStringProperty(municipio);
+        this.email = new SimpleStringProperty(email);
+        this.observacao = new SimpleStringProperty(observacao);
+        this.sexo = new SimpleStringProperty(sexo);
+        this.dataNascimento = new SimpleStringProperty(dataNascimento);
+        this.numero = new SimpleIntegerProperty(numero);
     }
 
-    public StringProperty nomePropertyProperty() {
-        return nomeProperty;
+    public StringProperty nomeProperty() {
+        return nome;
     }
 
-    public void setNomeProperty(String nomeProperty) {
-        this.nomeProperty.set(nomeProperty);
+    public StringProperty telefoneProperty() {
+        return telefone;
     }
 
-    public String getTelefoneProperty() {
-        return telefoneProperty.get();
+    public StringProperty municipioProperty() {
+        return municipio;
     }
 
-    public StringProperty telefonePropertyProperty() {
-        return telefoneProperty;
+    public StringProperty emailProperty() {
+        return email;
     }
 
-    public void setTelefoneProperty(String telefoneProperty) {
-        this.telefoneProperty.set(telefoneProperty);
+    public StringProperty observacaoProperty() {
+        return observacao;
     }
 
-    public String getMunicipioProperty() {
-        return municipioProperty.get();
+    public StringProperty sexoProperty() {
+        return sexo;
     }
 
-    public StringProperty municipioPropertyProperty() {
-        return municipioProperty;
+    public StringProperty dataNascProperty() {
+        return dataNascimento;
     }
 
-    public void setMunicipioProperty(String municipioProperty) {
-        this.municipioProperty.set(municipioProperty);
+    public IntegerProperty numeroProperty() {
+        return numero;
     }
 
-    public String getEmailProperty() {
-        return emailProperty.get();
+    public String getNome() {
+        return nome.get();
     }
 
-    public StringProperty emailPropertyProperty() {
-        return emailProperty;
+    public void setNome(String nome) {
+        this.nome.set(nome);
     }
 
-    public void setEmailProperty(String emailProperty) {
-        this.emailProperty.set(emailProperty);
+    public String getTelefone() {
+        return telefone.get();
     }
 
-    public String getObservacaoProperty() {
-        return observacaoProperty.get();
+    public void setTelefone(String telefone) {
+        this.telefone.set(telefone);
     }
 
-    public StringProperty observacaoPropertyProperty() {
-        return observacaoProperty;
+    public String getMunicipio() {
+        return municipio.get();
     }
 
-    public void setObservacaoProperty(String observacaoProperty) {
-        this.observacaoProperty.set(observacaoProperty);
+    public void setMunicipio(String municipio) {
+        this.municipio.set(municipio);
     }
 
-    public String getSexoProperty() {
-        return sexoProperty.get();
+    public String getEmail() {
+        return email.get();
     }
 
-    public StringProperty sexoPropertyProperty() {
-        return sexoProperty;
+    public void setEmail(String email) {
+        this.email.set(email);
     }
 
-    public void setSexoProperty(String sexoProperty) {
-        this.sexoProperty.set(sexoProperty);
+    public String getObservacao() {
+        return observacao.get();
     }
 
-    public String getDataNascimentoProperty() {
-        return dataNascimentoProperty.get();
+    public void setObservacao(String observacao) {
+        this.observacao.set(observacao);
     }
 
-    public StringProperty dataNascimentoPropertyProperty() {
-        return dataNascimentoProperty;
+    public String getSexo() {
+        return sexo.get();
     }
 
-    public void setDataNascimentoProperty(String dataNascimentoProperty) {
-        this.dataNascimentoProperty.set(dataNascimentoProperty);
+    public void setSexo(String sexo) {
+        this.sexo.set(sexo);
     }
 
-    public int getNumeroProperty() {
-        return numeroProperty.get();
+    public String getDataNascimento() {
+        return dataNascimento.get();
     }
 
-    public IntegerProperty numeroPropertyProperty() {
-        return numeroProperty;
+    public StringProperty dataNascimentoProperty() {
+        return dataNascimento;
     }
 
-    public void setNumeroProperty(int numeroProperty) {
-        this.numeroProperty.set(numeroProperty);
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento.set(dataNascimento);
+    }
+
+    public int getNumero() {
+        return numero.get();
+    }
+
+    public void setNumero(int numero) {
+        this.numero.set(numero);
     }
 }
