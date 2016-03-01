@@ -7,3 +7,5 @@ juniormiqueletti@gmail.com
 Faculdade Cidade Verde | FCV
 
 Especializacao em Desenvolvimento Java
+
+IntelJ IDEA 14.0
