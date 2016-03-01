@@ -10,13 +10,14 @@ import javafx.beans.property.StringProperty;
  */
 public class Contato {
 
-    StringProperty nome, telefone, municipio, email, observacao, sexo, dataNascimento;
+    StringProperty nome, telefone, municipio, email, observacao, sexo, dataNascimento, estado;
     IntegerProperty numero;
 
-    public Contato(String nome, String telefone, String municipio, String email, String observacao, String sexo, String dataNascimento, Integer numero) {
+    public Contato(String nome, String telefone, String municipio,String estado, String email, String observacao, String sexo, String dataNascimento, Integer numero) {
         this.nome = new SimpleStringProperty(nome);
         this.telefone = new SimpleStringProperty(telefone);
         this.municipio = new SimpleStringProperty(municipio);
+        this.estado = new SimpleStringProperty(estado);
         this.email = new SimpleStringProperty(email);
         this.observacao = new SimpleStringProperty(observacao);
         this.sexo = new SimpleStringProperty(sexo);
@@ -36,6 +37,9 @@ public class Contato {
         return municipio;
     }
 
+    public StringProperty estadoProperty() {
+        return estado;
+    }
     public StringProperty emailProperty() {
         return email;
     }
@@ -79,7 +83,13 @@ public class Contato {
     public void setMunicipio(String municipio) {
         this.municipio.set(municipio);
     }
+    public String getEstado() {
+        return estado.get();
+    }
 
+    public void setEstado(String estado) {
+        this.estado.set(estado);
+    }
     public String getEmail() {
         return email.get();
     }
