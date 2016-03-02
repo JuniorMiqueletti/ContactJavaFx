@@ -8,9 +8,12 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
@@ -81,6 +84,14 @@ public class ContatoController implements Initializable {
 
     @FXML
     void novoAction(ActionEvent event) {
+        VBox root = new VBox();
+        Scene scene = new Scene(root,300,200);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Titulo do novo cenario");
+        stage.show();
+
+
         limparCampos();
     }
 
