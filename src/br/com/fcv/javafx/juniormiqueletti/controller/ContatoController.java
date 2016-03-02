@@ -5,26 +5,26 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleGroup;
 
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ContatoController implements Initializable {
 
 
     ObservableList<Contato> dados;
+
+    FilteredList<Contato> dadosFiltrados;
+
+    SortedList<Contato> dadosOrdenados;
 
     @FXML
     private TableView<Contato> tvContatos;
@@ -72,6 +72,9 @@ public class ContatoController implements Initializable {
     @FXML
     private RadioButton rbFeminino;
 
+    @FXML
+    private TextField tfPesquisar;
+
     public ContatoController() {
         dados = FXCollections.observableArrayList();
     }
@@ -94,7 +97,15 @@ public class ContatoController implements Initializable {
 
     @FXML
     void removerAction(ActionEvent event) {
-        dados.remove(tvContatos.getSelectionModel().getSelectedItem());
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setHeaderText("Atenção");
+        alerta.setContentText("Tem certeza que quer remover este registro ?");
+
+        Optional<ButtonType> resultado = alerta.showAndWait();
+        if(resultado.get()==ButtonType.OK){
+            dados.remove(tvContatos.getSelectionModel().getSelectedItem());
+        }
+
     }
 
     @FXML
@@ -152,7 +163,23 @@ public class ContatoController implements Initializable {
         tcTelefone.setCellValueFactory(c -> c.getValue().telefoneProperty());
         tcEmail.setCellValueFactory(c -> c.getValue().emailProperty());
 
-        tvContatos.setItems(dados);
+        dadosFiltrados = new FilteredList<Contato>(dados);
+
+        dadosOrdenados = new SortedList<>(dadosFiltrados);
+
+       /* tfPesquisar.textProperty().addListener((observable, oldValue, newValue) -> {
+            dadosFiltrados.setPredicate(p->p.getNome().contains(newValue));
+        });*/
+        tfPesquisar.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                dadosFiltrados.setPredicate(p-> p.getNome().contains(newValue)
+                                                ||  p.getEmail().contains(newValue)
+                                                ||  p.getTelefone().contains(newValue));
+            }
+        });
+
+        tvContatos.setItems(dadosOrdenados);
 
         cbEstado.getItems().add("PR");
         cbEstado.getItems().add("RS");
@@ -187,6 +214,7 @@ public class ContatoController implements Initializable {
             tfNumero.setText(String.valueOf(newValue.getNumero()));
             taObservacao.setText(newValue.getObservacao());
             tfMunicipio.setText(newValue.getMunicipio());
+
         });
     }
 

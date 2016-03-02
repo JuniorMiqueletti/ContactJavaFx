@@ -53,13 +53,14 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView fx:id="tvContatos" layoutX="14.0" layoutY="55.0" prefHeight="369.0" prefWidth="228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tvContatos" layoutX="14.0" layoutY="40.0" prefHeight="432.0" prefWidth="347.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
                     <columns>
                       <TableColumn fx:id="tcNome" prefWidth="157.0" text="Nome" />
                       <TableColumn fx:id="tcTelefone" prefWidth="70.0" text="Telefone" />
                         <TableColumn fx:id="tcEmail" prefWidth="119.0" text="E-mail" />
                     </columns>
                   </TableView>
+                  <TextField fx:id="tfPesquisar" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="321.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
