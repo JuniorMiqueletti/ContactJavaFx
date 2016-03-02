@@ -167,17 +167,20 @@ public class ContatoController implements Initializable {
 
         dadosOrdenados = new SortedList<>(dadosFiltrados);
 
-       /* tfPesquisar.textProperty().addListener((observable, oldValue, newValue) -> {
-            dadosFiltrados.setPredicate(p->p.getNome().contains(newValue));
-        });*/
-        tfPesquisar.textProperty().addListener(new ChangeListener<String>() {
+        tfPesquisar.textProperty().addListener((observable, oldValue, newValue) -> {
+            dadosFiltrados.setPredicate(p-> p.getNome().contains(newValue)
+                    ||  p.getEmail().contains(newValue)
+                    ||  p.getTelefone().contains(newValue));
+        });
+
+      /*  tfPesquisar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 dadosFiltrados.setPredicate(p-> p.getNome().contains(newValue)
                                                 ||  p.getEmail().contains(newValue)
                                                 ||  p.getTelefone().contains(newValue));
             }
-        });
+        });*/
 
         tvContatos.setItems(dadosOrdenados);
 
