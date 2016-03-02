@@ -84,13 +84,13 @@ public class ContatoController implements Initializable {
 
     @FXML
     void novoAction(ActionEvent event) {
+
         VBox root = new VBox();
         Scene scene = new Scene(root,300,200);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Titulo do novo cenario");
         stage.show();
-
 
         limparCampos();
     }
