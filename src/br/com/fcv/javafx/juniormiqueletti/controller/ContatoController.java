@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
@@ -230,6 +231,26 @@ public class ContatoController implements Initializable {
             tfMunicipio.setText(newValue.getMunicipio());
 
         });
+
+        tfNumero.setTextFormatter(new TextFormatter<Integer>(new StringConverter<Integer>() {
+            @Override
+            public String toString(Integer object) {
+                if (object !=null){
+                    return object.toString();
+                }else{
+                    return "";
+                }
+            }
+
+            @Override
+            public Integer fromString(String string) {
+                if(string.length()>0){
+                    return Integer.parseInt(string);
+                }else{
+                    return null;
+                }
+            }
+        }));
     }
 
 
