@@ -1,6 +1,7 @@
 package br.com.fcv.javafx.juniormiqueletti.controller;
 
 import br.com.fcv.javafx.juniormiqueletti.model.Contato;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -14,9 +15,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -39,6 +43,9 @@ public class ContatoController implements Initializable {
     private TableColumn<Contato, String> tcTelefone;
     @FXML
     private TableColumn<Contato, String> tcEmail;
+
+    @FXML
+    private TableColumn<Contato, String> tcDataNasc;
 
     @FXML
     private TextField tfNome;
@@ -126,8 +133,6 @@ public class ContatoController implements Initializable {
         String sexo = new String();
         sexo = rbMasculino.isSelected() ? "M" : "F";
 
-        String data = dpDataNasc.getValue().format(DateTimeFormatter.ISO_DATE);
-
         int numero = 0;
 
         numero = tfNumero.getText().length() > 0 ? Integer.valueOf(tfNumero.getText()) : numero;
@@ -140,7 +145,7 @@ public class ContatoController implements Initializable {
                         tfEmail.getText(),
                         taObservacao.getText(),
                         sexo,
-                        data,
+                        dpDataNasc.getValue(),
                         numero)
                 );
 
@@ -157,7 +162,7 @@ public class ContatoController implements Initializable {
                 "juniormiqueletti@gmail.com",
                 "Dados Iniciais",
                 "Masculino",
-                "18/02/1987",
+                LocalDate.of(1987, Month.FEBRUARY,18),
                 883));
 
         dados.add(new Contato("Ninja da Escuridao",
@@ -167,7 +172,7 @@ public class ContatoController implements Initializable {
                 "juniormiqueletti@gmail.com",
                 "Dados Iniciais2",
                 "Masculino",
-                "18/02/1987",
+                LocalDate.of(1987, Month.FEBRUARY,18),
                 883));
 
 
@@ -185,14 +190,12 @@ public class ContatoController implements Initializable {
                     ||  p.getTelefone().contains(newValue));
         });
 
-      /*  tfPesquisar.textProperty().addListener(new ChangeListener<String>() {
+        tcDataNasc.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contato, String>, ObservableValue<String>>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                dadosFiltrados.setPredicate(p-> p.getNome().contains(newValue)
-                                                ||  p.getEmail().contains(newValue)
-                                                ||  p.getTelefone().contains(newValue));
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Contato, String> param) {
+                return new SimpleStringProperty(param.getValue().getDataNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             }
-        });*/
+        });
 
         tvContatos.setItems(dadosOrdenados);
 
@@ -208,19 +211,6 @@ public class ContatoController implements Initializable {
         cbEstado.getItems().add("AL");
         cbEstado.getItems().add("GO");
         cbEstado.getItems().add("TO");
-
-       /* tvContatos.selectionModelProperty().addListener(new ChangeListener<TableView.TableViewSelectionModel<Contato>>() {
-            @Override
-            public void changed(ObservableValue<? extends TableView.TableViewSelectionModel<Contato>> observable, TableView.TableViewSelectionModel<Contato> oldValue, TableView.TableViewSelectionModel<Contato> newValue) {
-                tfNome.setText(newValue.getSelectedItem().getNome());
-                tfEmail.setText(newValue.getSelectedItem().getEmail());
-                tfTelefone.setText(newValue.getSelectedItem().getTelefone());
-                tfNumero.setText(newValue.getSelectedItem().getNumero() + "");
-                tfObersavao.setText(newValue.getSelectedItem().getObservacao());
-                tfMunicipio.setText(newValue.getSelectedItem().getMunicipio());
-            }
-        });*/
-
 
         tvContatos.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             tfNome.setText(newValue.getNome());

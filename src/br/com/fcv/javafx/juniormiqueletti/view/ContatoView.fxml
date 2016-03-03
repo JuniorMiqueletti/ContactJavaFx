@@ -49,18 +49,19 @@
       </MenuBar>
    </top>
    <center>
-      <SplitPane dividerPositions="0.4794520547945205" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.5095890410958904" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <TableView fx:id="tvContatos" layoutX="14.0" layoutY="40.0" prefHeight="432.0" prefWidth="347.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
                     <columns>
-                      <TableColumn fx:id="tcNome" prefWidth="157.0" text="Nome" />
-                      <TableColumn fx:id="tcTelefone" prefWidth="70.0" text="Telefone" />
-                        <TableColumn fx:id="tcEmail" prefWidth="119.0" text="E-mail" />
+                      <TableColumn fx:id="tcNome" prefWidth="133.0" text="Nome" />
+                      <TableColumn fx:id="tcTelefone" prefWidth="94.0" text="Telefone" />
+                        <TableColumn fx:id="tcEmail" prefWidth="68.0" text="E-mail" />
+                        <TableColumn fx:id="tcDataNasc" prefWidth="75.0" text="Data Nasc." />
                     </columns>
                   </TableView>
-                  <TextField fx:id="tfPesquisar" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="321.0" />
+                  <TextField fx:id="tfPesquisar" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="341.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">

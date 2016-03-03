@@ -1,19 +1,19 @@
 package br.com.fcv.javafx.juniormiqueletti.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+
+import java.time.LocalDate;
 
 /**
  * Created by Junior-Pc on 25/02/2016.
  */
 public class Contato {
 
-    StringProperty nome, telefone, municipio, email, observacao, sexo, dataNascimento, estado;
+    StringProperty nome, telefone, municipio, email, observacao, sexo,  estado;
     IntegerProperty numero;
+  ObjectProperty <LocalDate> dataNascimento;
 
-    public Contato(String nome, String telefone, String municipio,String estado, String email, String observacao, String sexo, String dataNascimento, Integer numero) {
+    public Contato(String nome, String telefone, String municipio,String estado, String email, String observacao, String sexo, LocalDate dataNascimento, Integer numero) {
         this.nome = new SimpleStringProperty(nome);
         this.telefone = new SimpleStringProperty(telefone);
         this.municipio = new SimpleStringProperty(municipio);
@@ -21,8 +21,20 @@ public class Contato {
         this.email = new SimpleStringProperty(email);
         this.observacao = new SimpleStringProperty(observacao);
         this.sexo = new SimpleStringProperty(sexo);
-        this.dataNascimento = new SimpleStringProperty(dataNascimento);
+        this.dataNascimento = new SimpleObjectProperty(dataNascimento);
         this.numero = new SimpleIntegerProperty(numero);
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento.set(dataNascimento);
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento.get();
+    }
+
+    public ObjectProperty<LocalDate> dataNascimentoProperty() {
+        return dataNascimento;
     }
 
     public StringProperty nomeProperty() {
@@ -50,10 +62,6 @@ public class Contato {
 
     public StringProperty sexoProperty() {
         return sexo;
-    }
-
-    public StringProperty dataNascProperty() {
-        return dataNascimento;
     }
 
     public IntegerProperty numeroProperty() {
@@ -112,18 +120,6 @@ public class Contato {
 
     public void setSexo(String sexo) {
         this.sexo.set(sexo);
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento.get();
-    }
-
-    public StringProperty dataNascimentoProperty() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento.set(dataNascimento);
     }
 
     public int getNumero() {
