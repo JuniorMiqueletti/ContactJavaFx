@@ -1,11 +1,13 @@
-Projeto Start de Java FX
+# Projeto Start de Java FX
 
-Junior Miqueletti
+### Pequeno App de lista de contatos (Crud em memória, com listagem).
 
-juniormiqueletti@gmail.com
++ Junior Miqueletti
++ juniormiqueletti@gmail.com
 
 Faculdade Cidade Verde | FCV
-
 Especializacao em Desenvolvimento Java
 
-IntelJ IDEA 14.0
+* IntelJ IDEA 14.0
+* Java 8
+* JavaFX
